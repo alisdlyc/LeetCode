@@ -19,6 +19,7 @@ import java.util.*;
 //]
 //
 // Related Topics 数组 双指针
+
 /**
  * 1、暴力解题，三重循环解决
  *  + 使用 Set定义的 LinkedHashSet 可以去除重复的元素，但是时间复杂度为O(n^3),运行超时
@@ -88,44 +89,44 @@ import java.util.*;
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
- class Solution {
-     public List<List<Integer>> threeSum(int[] nums) {
-         List<List<Integer>> re = new ArrayList<>();
-
-         int len = nums.length;
-         if (len < 3 ) {
-             return re;
-         }
-         Arrays.sort(nums);
-         for (int i = 0; i < len; i++) {
-             if (nums[i] > 0) {
-                 break;
-             }
-             if (i > 0 && nums[i] == nums[i - 1]) {
-                 continue;
-             }
-             int L = i + 1;
-             int R = len - 1;
-             while (L < R) {
-                 int sum = nums[i] + nums[L] + nums[R];
-                 if (sum < 0) {
-                     L++;
-                 }else if (sum > 0) {
-                     R--;
-                 }else {
-                     re.add(Arrays.asList(nums[i],nums[L],nums[R]));
-                     while (L < R && nums[L] == nums[L + 1]) {
-                         L++;
-                     }
-                     while (L < R && nums[R] == nums[R - 1]) {
-                         R--;
-                     }
-                     L++;
-                     R--;
-                 }
-             }
-         }
-         return re;
-     }
- }
+// class Solution {
+//     public List<List<Integer>> threeSum(int[] nums) {
+//         List<List<Integer>> re = new ArrayList<>();
+//
+//         int len = nums.length;
+//         if (len < 3 ) {
+//             return re;
+//         }
+//         Arrays.sort(nums);
+//         for (int i = 0; i < len; i++) {
+//             if (nums[i] > 0) {
+//                 break;
+//             }
+//             if (i > 0 && nums[i] == nums[i - 1]) {
+//                 continue;
+//             }
+//             int L = i + 1;
+//             int R = len - 1;
+//             while (L < R) {
+//                 int sum = nums[i] + nums[L] + nums[R];
+//                 if (sum < 0) {
+//                     L++;
+//                 }else if (sum > 0) {
+//                     R--;
+//                 }else {
+//                     re.add(Arrays.asList(nums[i],nums[L],nums[R]));
+//                     while (L < R && nums[L] == nums[L + 1]) {
+//                         L++;
+//                     }
+//                     while (L < R && nums[R] == nums[R - 1]) {
+//                         R--;
+//                     }
+//                     L++;
+//                     R--;
+//                 }
+//             }
+//         }
+//         return re;
+//     }
+// }
 //leetcode submit region end(Prohibit modification and deletion)
