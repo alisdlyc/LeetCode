@@ -48,6 +48,7 @@ import java.util.Stack;
  *     TreeNode(int x) { val = x; }
  * }
  */
+/*
 class Solution {
     public boolean isValidBST(TreeNode root) {
         return helper(root, null, null);
@@ -81,3 +82,4 @@ class TreeNode {
     TreeNode right;
     TreeNode(int x) { val = x; }
 }
+*/
