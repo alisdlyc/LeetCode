@@ -37,6 +37,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Definition for a binary tree node.
@@ -49,28 +50,24 @@ import java.util.List;
  */
 /*
 class Solution {
-    private List<Integer> re;
     public boolean isValidBST(TreeNode root) {
-        re = new ArrayList<>();
-        dfs(root);
-        for (int i = 0; i < re.size() - 1; i++) {
-            if (re.get(i) >= re.get( i + 1)) {
+        Stack<TreeNode> stack = new Stack<>();
+        double inorder = - Double.MAX_VALUE;
+
+        while (!stack.isEmpty() || root != null) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+
+            if (root.val <= inorder) {
                 return false;
             }
+            inorder = root.val;
+            root = root.right;
         }
         return true;
-    }
-
-    public void dfs(TreeNode root) {
-        if (root != null) {
-            if (root.left != null) {
-                dfs(root.left);
-            }
-            re.add(root.val);
-            if (root.right != null) {
-                dfs(root.right);
-            }
-        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
@@ -78,5 +75,6 @@ class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
-    TreeNode(int x) { val = x};
-}*/
+    TreeNode(int x) { val = x; }
+}
+*/
