@@ -40,24 +40,34 @@ class Node {
 };
 */
 
-/*
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 class Solution {
     public int maxDepth(Node root) {
         if (root == null) {
             return 0;
-        } else if (root.children.isEmpty()) {
-            return 1;
-        } else {
-            List<Integer> heights = new LinkedList<>();
-            for (Node item : root.children) {
-                heights.add(maxDepth(item));
-            }
-            return Collections.max(heights) + 1;
         }
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+
+        int depth = 0;
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+
+            for (int i = 0; i < size; i++) {
+                Node current = queue.poll();
+                for (Node child : current.children) {
+                    queue.offer(child);
+                }
+            }
+            depth++;
+        }
+
+        return depth;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
@@ -75,4 +85,4 @@ class Node {
         val = _val;
         children = _children;
     }
-};*/
+};
