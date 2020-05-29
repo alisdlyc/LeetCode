@@ -13,24 +13,12 @@
 // 
 // Related Topics 字符串
 
-/*
 
+/*
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int lengthOfLastWord(String s) {
-       int end = s.length();
-       while(end > 0 && s.charAt(end - 1) == ' ') {
-           end--;
-       }
-       if (end < 0) {
-           return 0;
-       }
-       int start = end;
-       while (start >= 1 && s.charAt(start - 1) != ' ') {
-           start--;
-       }
-
-       return end - start;
+        return s.trim().length() - s.trim().lastIndexOf(" ") - 1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
